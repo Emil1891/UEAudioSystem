@@ -12,7 +12,11 @@ namespace
 {
 	auto HeapPred = [](const FGridNode& Left, const FGridNode& Right)
 	{
-		return Left.GetFCost() < Right.GetFCost() || Left.HCost < Right.HCost;
+		if(Left.GetFCost() == Right.GetFCost()) // If FCost is the same, check HCost 
+			return Left.HCost < Right.HCost; 
+
+		// Otherwise, FCost decides priority 
+		return Left.GetFCost() < Right.GetFCost(); 
 	};
 }
 
